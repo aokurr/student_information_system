@@ -19,20 +19,21 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping(path = "api/v1/students")
 @RequiredArgsConstructor
 public class StudentController {
-	
-	private final studentService studentService;
-		
-	@GetMapping
-	public List<student> getStudents(){
-		return null;
-    }
-   
-    @PostMapping
-    public void registerNewStudent(@RequestBody student student){
-		studentService.addNewStudent(student);
-    }
-    @DeleteMapping("/{studentId}")
-    public void deleteStudent(@PathVariable("studentId") Long studentId){
-		studentService.deleteStudent(studentId);
-    }
+
+  private final studentService studentService;
+
+  @GetMapping
+  public List<student> getStudents() {
+    return null;
+  }
+
+  @PostMapping
+  public void registerNewStudent(@RequestBody student student) {
+    studentService.addNewStudent(student);
+  }
+
+  @DeleteMapping("/{studentId}")
+  public void deleteStudent(@PathVariable("studentId") Long studentId) {
+    studentService.deleteStudent(studentId);
+  }
 }
