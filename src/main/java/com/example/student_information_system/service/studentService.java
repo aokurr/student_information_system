@@ -2,9 +2,9 @@ package com.example.student_information_system.service;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
-import com.example.demo3.student.Repository.StudentRepository;
-import com.example.demo3.student.entity.Student;
+
 import com.example.student_information_system.domain.student;
+import com.example.student_information_system.repository.studentRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -13,8 +13,8 @@ import lombok.RequiredArgsConstructor;
 public class studentService {
 	
 	
-	private final StudentRepository studentRepository;
-	public List<Student> getStudents(){
+	private final studentRepository studentRepository;
+	public List<student> getStudents(){
 		
 		return studentRepository.findAll();
 	}
