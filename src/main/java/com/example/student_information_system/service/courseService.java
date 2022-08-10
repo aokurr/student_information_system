@@ -4,6 +4,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.example.student_information_system.domain.course;
+import com.example.student_information_system.repository.courseRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -13,17 +14,17 @@ public class courseService {
 	
 	
 	private final courseRepository courseRepository;
-	public List<course> getStudents(){
+	public List<course> getCourses(){
 		
 		return courseRepository.findAll();
 	}
 
     public void addNewCourse(course course) {
-		Optional <course> courseByEmail  = courseRepository		
+		/*Optional <course> courseByEmail  = courseRepository		
 				.findCourseByEmail(course.getEmail());
 		if(courseByEmail.isPresent()){
 			throw new IllegalStateException("email taken");
-		}
+		}*/
 
 		courseRepository.save(course);
     }
