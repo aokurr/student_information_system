@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.student_information_system.domain.student;
+import com.example.student_information_system.service.studentService;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping(path = "api/v1/students")
 @RequiredArgsConstructor
-public class studentController {
+public class StudentController {
 	
 	private final studentService studentService;
 		
