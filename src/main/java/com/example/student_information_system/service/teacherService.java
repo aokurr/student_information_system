@@ -20,9 +20,9 @@ public class teacherService {
 		return teacherRepository.findAll();
 	}
 
-    public void addNewteacher(teacher teacher) {
+    public void addNewTeacher(teacher teacher) {
 		Optional <teacher> teacherByEmail  = teacherRepository		
-				.findteacherByEmail(teacher.getEmail());
+				.findTeacherByEmail(teacher.getEmail());
 		if(teacherByEmail.isPresent()){
 			throw new IllegalStateException("email taken");
 		}

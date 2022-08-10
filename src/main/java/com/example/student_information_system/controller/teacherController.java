@@ -30,7 +30,7 @@ public class teacherController {
 
   @PostMapping
   public void registerNewteacher(@RequestBody teacher teacher) {
-    teacherService.addNewteacher(teacher);
+    teacherService.addNewTeacher(teacher);
   }
 
   @DeleteMapping("/{teacherId}")

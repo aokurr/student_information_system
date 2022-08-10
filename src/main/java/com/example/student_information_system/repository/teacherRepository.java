@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.student_information_system.domain.teacher;
 
 public interface teacherRepository extends JpaRepository<teacher,Long>{
-    Optional <teacher> findteacherByEmail(String email);
+    Optional <teacher> findTeacherByEmail(String email);
 }
