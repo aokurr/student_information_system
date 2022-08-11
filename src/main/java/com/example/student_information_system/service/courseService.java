@@ -37,8 +37,4 @@ public class courseService {
 		courseRepository.deleteById(courseId);
     }
 
-
-	
-
-	
 }

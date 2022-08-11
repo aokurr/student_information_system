@@ -1,9 +1,13 @@
 package com.example.student_information_system.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 @Entity
 @Table(name = "Student")
 @Data
@@ -22,8 +26,12 @@ public class student {
     
     @Column(name = "email")
     private String email;
+
     
     @Column(name = "password")
     private String password;
-        
+    
+    @ElementCollection
+    @CollectionTable(name="listOfCourses")
+    private List<course> courses=new ArrayList<>();
 }
