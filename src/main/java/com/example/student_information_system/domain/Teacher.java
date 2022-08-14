@@ -1,37 +1,32 @@
 package com.example.student_information_system.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
+
 @Entity
-@Table(name = "Student")
+@Table(name = "Teacher")
 @Data
 @AllArgsConstructor
-public class student {
+@NoArgsConstructor
+public class Teacher {
     @Id
     @GeneratedValue
     @Column(name = "id", nullable = false, updatable = false)
     private long id;
-    
+
     @Column(name = "name")
     private String name;
-    
+
     @Column(name = "surname")
     private String surname;
-    
+
     @Column(name = "email")
     private String email;
 
-    
     @Column(name = "password")
     private String password;
-    
-    @ElementCollection
-    @CollectionTable(name="listOfCourses")
-    private List<course> courses=new ArrayList<>();
+
 }
