@@ -1,6 +1,5 @@
 package com.example.student_information_system.controller;
 
-
 import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,25 +10,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.student_information_system.domain.teacher;
-import com.example.student_information_system.service.teacherService;
+import com.example.student_information_system.domain.Course;
+import com.example.student_information_system.domain.Teacher;
+import com.example.student_information_system.service.TeacherService;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping(path = "api/v1/teacher")
 @RequiredArgsConstructor
-public class teacherController {
+public class TeacherController {
 
-  private final teacherService teacherService;
+  private final TeacherService teacherService;
 
   @GetMapping
-  public List<teacher> getteachers() {
+  public List<Teacher> getteachers() {
     return null;
   }
 
   @PostMapping
-  public void registerNewteacher(@RequestBody teacher teacher) {
+  public void registerNewteacher(@RequestBody Teacher teacher) {
     teacherService.addNewTeacher(teacher);
   }
 
@@ -37,4 +37,14 @@ public class teacherController {
   public void deleteteacher(@PathVariable("teacherId") Long teacherId) {
     teacherService.deleteteacher(teacherId);
   }
+
+  @PostMapping("/createCourse")
+  public void createCourse(@RequestBody Course course) {
+    teacherService.addNewCourse(course);
+  }
+
+  /*@PostMapping("/{teacherId}/createCourse")
+  public void createCourse(@RequestBody Course course,@PathVariable("teacherId") Long teacherId) {
+    teacherService.addNewCourse(course,teacherId);
+  }*/
 }
