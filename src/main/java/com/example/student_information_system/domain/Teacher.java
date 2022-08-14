@@ -1,6 +1,7 @@
 package com.example.student_information_system.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,15 +18,19 @@ public class Teacher {
     @Column(name = "id", nullable = false, updatable = false)
     private long id;
 
+    @NotBlank
     @Column(name = "name")
     private String name;
 
+    @NotBlank
     @Column(name = "surname")
     private String surname;
 
+    @NotBlank
     @Column(name = "email")
     private String email;
-
+    
+    @NotBlank
     @Column(name = "password")
     private String password;
 
