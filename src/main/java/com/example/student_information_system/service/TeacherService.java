@@ -9,9 +9,11 @@ import com.example.student_information_system.domain.Teacher;
 import com.example.student_information_system.repository.teacherRepository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class TeacherService {
 
 	private final teacherRepository teacherRepository;
@@ -27,7 +29,7 @@ public class TeacherService {
 		if (teacherByEmail.isPresent()) {
 			throw new IllegalStateException("email taken");
 		}
-
+		log.info("teacher {} added",teacher.getName());
 		teacherRepository.save(teacher);
 	}
 

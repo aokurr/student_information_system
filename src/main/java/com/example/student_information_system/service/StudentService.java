@@ -3,7 +3,6 @@ package com.example.student_information_system.service;
 import java.util.List;
 import java.util.Optional;
 
-import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
@@ -11,8 +10,10 @@ import com.example.student_information_system.domain.Student;
 import com.example.student_information_system.repository.studentRepository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class StudentService {
 
@@ -37,7 +38,7 @@ public class StudentService {
 		if (studentByEmail.isPresent()) {
 			throw new IllegalStateException("email taken");
 		}
-
+		log.info("student {} added",student.getName());
 		studentRepository.save(student);
 	}
 
@@ -46,6 +47,7 @@ public class StudentService {
 		if (!exists) {
 			throw new IllegalStateException();
 		}
+		log.info("student {} deleted",studentRepository.findById(studentId).get().getName());
 		studentRepository.deleteById(studentId);
 	}
 
@@ -55,8 +57,10 @@ public class StudentService {
 				.orElseThrow(() -> new IllegalStateException("student with id" + "does not exist"));
 		
 		student.getCourses().add(courseService.getCourse(courseCode));
+		
 		courseService.updateClassCapacity(courseCode);
 
+		log.info("student {} added to course number {}",student.getName(),courseCode);
 		studentRepository.save(student);
 		
 	}
