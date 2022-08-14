@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.student_information_system.domain.student;
-import com.example.student_information_system.service.studentService;
+import com.example.student_information_system.domain.Student;
+import com.example.student_information_system.service.StudentService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -21,15 +21,20 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class StudentController {
 
-  private final studentService studentService;
+  private final StudentService studentService;
 
   @GetMapping
-  public List<student> getStudents() {
-    return null;
+  public List<Student> getStudents() {
+    return studentService.getStudents();
+  }
+
+  @GetMapping("/{id}")
+  public Student getStudent(@PathVariable Long id) {
+    return studentService.getStudentById(id);
   }
 
   @PostMapping
-  public void registerNewStudent(@RequestBody student student) {
+  public void registerNewStudent(@RequestBody Student student) {
     studentService.addNewStudent(student);
   }
 
@@ -37,8 +42,10 @@ public class StudentController {
   public void deleteStudent(@PathVariable("studentId") Long studentId) {
     studentService.deleteStudent(studentId);
   }
+
   @PutMapping("/{id}")
   public void enrollCourse(@PathVariable Long id, @RequestBody String courseCode) {
-     studentService.addCourse(id,courseCode);
+    studentService.addCourse(id, courseCode);
   }
+
 }
