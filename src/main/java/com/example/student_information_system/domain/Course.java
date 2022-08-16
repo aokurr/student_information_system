@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
@@ -29,15 +31,18 @@ public class Course {
     @Column(name = "courseCode")
     private String courseCode;
     
-    @NotBlank
+    @Min(1)
+    @Max(2)
     @Column(name = "semester")
     private int semester;
 
-    @NotBlank
+    @Min(1)
+    @Max(8)
     @Column(name = "credits")
     private int credits;
     
-    @NotBlank
+    @Min(30)
+    @Max(120)
     @Column(name = "classCapacity")
     private int classCapacity;
     
