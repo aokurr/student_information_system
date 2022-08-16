@@ -16,3 +16,9 @@ spring:
 server:
   error:
     include-message : always
+
+questapp:
+    app:
+        secret: questapp
+    expires:
+        in: 604800
