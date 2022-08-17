@@ -50,7 +50,7 @@ public class CourseService {
 		
 		int capacity = getCourse(courseCode).getClassCapacity();
 		
-		if(capacity>150){
+		if(capacity>120){
 			throw new IllegalStateException();
 		}
 		
