@@ -49,8 +49,6 @@ public class StudentService {
 			return null;
 	}
 
-	//authentication şirfreleme nasıl kripto halde tutulor 
-	//jwt bak 
 	public ResponseEntity<String>  addNewStudent(Student student) {
 		Optional<Student> studentByEmail = studentRepository
 				.findStudentByEmail(student.getEmail());
@@ -99,6 +97,4 @@ public class StudentService {
 		String jwtToken = jwtTokenProvider.generateJwtToken(auth);
 		return "Bearer "+ jwtToken;
 	}
-	
-
 }
