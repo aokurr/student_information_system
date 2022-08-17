@@ -27,7 +27,7 @@ public class TeacherController {
 
   @GetMapping
   public List<Teacher> getteachers() {
-    return null;
+    return teacherService.getteachers();
   }
 
   @PostMapping("/auth/login")
@@ -49,10 +49,5 @@ public class TeacherController {
   public void createCourse(@RequestBody Course course) {
     teacherService.addNewCourse(course);
   }
-  
 
-  /*@PostMapping("/{teacherId}/createCourse")
-  public void createCourse(@RequestBody Course course,@PathVariable("teacherId") Long teacherId) {
-    teacherService.addNewCourse(course,teacherId);
-  }*/
 }

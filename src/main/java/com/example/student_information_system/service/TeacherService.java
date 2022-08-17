@@ -54,8 +54,11 @@ public class TeacherService {
 	}
 	public String login(UserRequest loginRequest) {
 		UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(loginRequest.getUserName(), loginRequest.getPassword());
+		
 		Authentication auth = authenticationManager.authenticate(authToken);
-		SecurityContextHolder.getContext().setAuthentication(auth);
+		
+		//SecurityContextHolder.getContext().setAuthentication(auth);
+		
 		String jwtToken = jwtTokenProvider.generateJwtToken(auth);
 		return "Bearer "+ jwtToken;
 	}
