@@ -3,8 +3,6 @@ package com.example.student_information_system.service;
 import java.util.List;
 import java.util.Optional;
 
-import javax.transaction.Transactional;
-
 import org.springframework.stereotype.Service;
 
 import com.example.student_information_system.domain.Student;
