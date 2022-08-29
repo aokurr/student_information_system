@@ -1,5 +1,6 @@
 package com.example.student_information_system.controller;
 
+<<<<<<< HEAD
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -50,4 +51,8 @@ public class StudentController {
     studentService.addCourse(id, courseCode);
   }
 
+=======
+public class StudentController {
+    
+>>>>>>> origin/Connection
 }
