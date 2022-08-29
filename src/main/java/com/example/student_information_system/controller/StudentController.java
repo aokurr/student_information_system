@@ -18,7 +18,7 @@ import com.example.student_information_system.service.StudentService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping(path = "students")
+@RequestMapping(path = "/api/students")
 @RequiredArgsConstructor
 public class StudentController {
 
