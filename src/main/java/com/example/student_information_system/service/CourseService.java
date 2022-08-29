@@ -8,9 +8,11 @@ import com.example.student_information_system.domain.Course;
 import com.example.student_information_system.repository.courseRepository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class CourseService {
 
 	private final courseRepository courseRepository;
@@ -31,7 +33,7 @@ public class CourseService {
 		if (courseByCourseCode.isPresent()) {
 			throw new IllegalStateException("Cours Code taken");
 		}
-
+		log.info("New course added");
 		courseRepository.save(course);
 	}
 
@@ -43,16 +45,19 @@ public class CourseService {
 		courseRepository.deleteById(courseId);
 	}
 
+	
 	public void updateClassCapacity(String courseCode){
 		
 		int capacity = getCourse(courseCode).getClassCapacity();
 		
-		if(capacity>150){
+		if(capacity>120){
 			throw new IllegalStateException();
 		}
 		
 		Course course=getCourse(courseCode);
+		
 		course.setClassCapacity(capacity+1);
+		log.info("Class capacity has been increased");
 		courseRepository.save(course);
 
 	}
