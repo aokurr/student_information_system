@@ -1,7 +1,9 @@
+
 package com.example.student_information_system.controller;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,21 +26,22 @@ public class CourseController {
     private final CourseService courseService;
 
     @GetMapping
-    public List<Course> getCourses() {
-        return courseService.getCourses();
+    public ResponseEntity<List<Course>> getCourses() {
+        return ResponseEntity.ok(courseService.getCourses());
     }
 
     @PostMapping
-    public void registerNewCourse(@RequestBody Course course) {
-        courseService.addNewCourse(course);
+    public ResponseEntity<Course> create(@RequestBody Course course) {
+        return ResponseEntity.ok(courseService.create(course));
     }
 
     @DeleteMapping("/{course}")
-    public void deleteCourse(@PathVariable("courseId") Long courseId) {
-        courseService.deleteCourse(courseId);
+    public void delete(@PathVariable("courseId") Long courseId) {
+        courseService.delete(courseId);
     }
+
     @PutMapping
-    public void changeCourse(String courseCode){
+    public void changeCourse(String courseCode) {
         courseService.updateClassCapacity(courseCode);
     }
 }

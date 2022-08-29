@@ -27,17 +27,17 @@ public class CourseService {
 				.orElseThrow(() -> new RuntimeException("course not found"));
 	}
 
-	public void addNewCourse(Course course) {
+	public Course create(Course course) {
 		Optional<Course> courseByCourseCode = courseRepository
 				.findCourseByCourseCode(course.getCourseCode());
 		if (courseByCourseCode.isPresent()) {
 			throw new IllegalStateException("Cours Code taken");
 		}
 		log.info("New course added");
-		courseRepository.save(course);
+		return courseRepository.save(course);
 	}
 
-	public void deleteCourse(Long courseId) {
+	public void delete(Long courseId) {
 		boolean exists = courseRepository.existsById(courseId);
 		if (!exists) {
 			throw new IllegalStateException();
